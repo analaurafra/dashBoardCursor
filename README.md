@@ -1,42 +1,42 @@
-# 📊 Dashboard de Vendas
+# 📊 Sales Dashboard
 
-Um dashboard interativo e responsivo para acompanhar vendas de uma concessionária, construído com **Python**, **Streamlit** e **PostgreSQL**.
+An interactive and responsive dashboard to track sales of a car dealership, built with **Python**, **Streamlit**, and **PostgreSQL**.
 
-## 🎯 Sobre o Projeto
+## 🎯 About the Project
 
-Este dashboard oferece uma visão completa e em tempo real das operações de vendas de uma concessionária, permitindo análises detalhadas por:
-- Vendedores e performance
-- Veículos mais vendidos
-- Cidades e estados
-- Clientes e histórico
-- Tendências de vendas
+This dashboard provides a comprehensive and real-time view of a car dealership's sales operations, enabling detailed analysis by:
+- Sales representatives and performance
+- Best-selling vehicles
+- Cities and states
+- Customers and history
+- Sales trends
 
-## 🛠️ Tecnologias Utilizadas
+## 🛠️ Technologies Used
 
-- **Python 3.8+** - Linguagem principal
-- **Streamlit** - Framework para criar interfaces web interativas
-- **PostgreSQL** - Banco de dados relacional
-- **Pandas** - Manipulação e análise de dados
-- **Plotly** - Visualizações interativas
+- **Python 3.8+** - Primary language
+- **Streamlit** - Framework for creating interactive web interfaces
+- **PostgreSQL** - Relational database
+- **Pandas** - Data manipulation and analysis
+- **Plotly** - Interactive visualizations
 
-## 📋 Pré-requisitos
+## 📋 Prerequisites
 
-Antes de começar, certifique-se de ter instalado:
-- Python 3.8 ou superior
-- PostgreSQL 12 ou superior
+Before starting, make sure you have installed:
+- Python 3.8 or higher
+- PostgreSQL 12 or higher
 - Git
-- PowerShell (para Windows)
+- PowerShell (for Windows)
 
-## 🚀 Instalação e Configuração
+## 🚀 Installation and Setup
 
-### 1️⃣ Clone o Repositório
+### 1️⃣ Clone the Repository
 
 ```bash
 git clone https://github.com/analaurafra/dashBoardCursor.git
 cd dashBoardCursor
 ```
 
-### 2️⃣ Crie o Ambiente Virtual
+### 2️⃣ Create Virtual Environment
 
 **Windows (PowerShell):**
 ```powershell
@@ -50,111 +50,111 @@ python -m venv .venv
 source .venv/bin/activate
 ```
 
-### 3️⃣ Instale as Dependências
+### 3️⃣ Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4️⃣ Configure a Conexão com PostgreSQL
+### 4️⃣ Configure PostgreSQL Connection
 
-1. Copie o arquivo de exemplo:
+1. Copy the example file:
 
 ```powershell
 copy config.example.toml config.toml
 ```
 
-2. Edite o arquivo `config.toml` com suas credenciais:
+2. Edit the `config.toml` file with your credentials:
 
 ```toml
 [database]
 host = "localhost"
 port = 5432
-database = "seu_banco_dados"
-user = "seu_usuario"
-password = "sua_senha"
+database = "your_database_name"
+user = "your_username"
+password = "your_password"
 ```
 
-> ⚠️ **Importante:** O arquivo `config.toml` é ignorado no git por segurança (veja `.gitignore`).
+> ⚠️ **Important:** The `config.toml` file is ignored in git for security reasons (see `.gitignore`).
 
-### 5️⃣ Inicie o Dashboard
+### 5️⃣ Start the Dashboard
 
-**Opção 1 - Usando PowerShell (Windows):**
+**Option 1 - Using PowerShell (Windows):**
 ```powershell
 cd dashBoardCursor
 .\run.ps1
 ```
 
-**Opção 2 - Usando Streamlit diretamente:**
+**Option 2 - Using Streamlit directly:**
 ```powershell
 cd dashBoardCursor
 streamlit run app.py
 ```
 
-O dashboard abrirá automaticamente em: `http://localhost:8501`
+The dashboard will automatically open at: `http://localhost:8501`
 
-## 📁 Estrutura do Projeto
+## 📁 Project Structure
 
 ```
 dashBoardCursor/
 ├── dashBoardCursor/
-│   ├── app.py                 # Aplicação principal
-│   ├── config.py              # Configurações e carregamento de variáveis
-│   ├── requirements.txt        # Dependências do projeto
+│   ├── app.py                 # Main application
+│   ├── config.py              # Configuration and variable loading
+│   ├── requirements.txt        # Project dependencies
 │   └── ...
-├── config.example.toml        # Arquivo de exemplo de configuração
-├── run.ps1                    # Script para iniciar a aplicação
-├── README.md                  # Este arquivo
-└── .gitignore                 # Arquivos ignorados pelo git
+├── config.example.toml        # Example configuration file
+├── run.ps1                    # Script to start the application
+├── README.md                  # This file
+└── .gitignore                 # Files ignored by git
 ```
 
-## 📊 Tabelas do Banco de Dados
+## 📊 Database Tables
 
-O dashboard utiliza as seguintes tabelas PostgreSQL:
+The dashboard uses the following PostgreSQL tables:
 
-| Tabela | Descrição |
+| Table | Description |
 |--------|-----------|
-| `vendas` | Registros de vendas realizadas |
-| `veiculos` | Catálogo de veículos disponíveis |
-| `vendedores` | Dados dos vendedores |
-| `clientes` | Informações dos clientes |
-| `concessionarias` | Dados das concessionárias |
-| `cidades` | Localidades atendidas |
-| `estados` | Estados/províncias |
+| `vendas` | Sales records |
+| `veiculos` | Available vehicles catalog |
+| `vendedores` | Sales representatives data |
+| `clientes` | Customer information |
+| `concessionarias` | Dealership data |
+| `cidades` | Cities served |
+| `estados` | States/provinces |
 
-## 🎬 Como Usar
+## 🎬 How to Use
 
-1. **Inicie a aplicação** seguindo as instruções de instalação
-2. **Navegue pelo dashboard** usando a barra lateral
-3. **Filtre dados** conforme necessário
-4. **Exporte relatórios** (quando disponível)
+1. **Start the application** following the installation instructions
+2. **Navigate through the dashboard** using the sidebar
+3. **Filter data** as needed
+4. **Export reports** (when available)
 
-## 🖼️ Visualizações Disponíveis
+## 🖼️ Available Visualizations
 
-- Gráficos de vendas por período
-- Performance de vendedores
-- Distribuição geográfica
-- Análise de veículos mais vendidos
-- Tendências e previsões
-- KPIs principais
+- Sales charts by period
+- Sales representative performance
+- Geographic distribution
+- Best-selling vehicles analysis
+- Trends and forecasts
+- Key performance indicators (KPIs)
 
-## ⚙️ Configurações Avançadas
+## ⚙️ Advanced Configuration
 
-### Variáveis de Ambiente
+### Environment Variables
 
-Você pode usar variáveis de ambiente em vez do `config.toml`:
+You can use environment variables instead of `config.toml`:
 
 ```bash
 export DB_HOST=localhost
 export DB_PORT=5432
-export DB_NAME=seu_banco
-export DB_USER=seu_usuario
-export DB_PASSWORD=sua_senha
+export DB_NAME=your_database
+export DB_USER=your_username
+export DB_PASSWORD=your_password
 ```
 
-### Personalização do Tema
+### Theme Customization
 
-Edite `.streamlit/config.toml` para customizar a aparência:
+Edit `.streamlit/config.toml` to customize the appearance:
 
 ```toml
 [theme]
@@ -167,34 +167,34 @@ font = "sans serif"
 
 ## 🐛 Troubleshooting
 
-### Erro de Conexão com PostgreSQL
-- Verifique se o PostgreSQL está rodando
-- Confirme as credenciais em `config.toml`
-- Teste a conexão: `psql -h localhost -U seu_usuario -d seu_banco`
+### PostgreSQL Connection Error
+- Verify that PostgreSQL is running
+- Confirm credentials in `config.toml`
+- Test the connection: `psql -h localhost -U your_username -d your_database`
 
-### Dependências com Conflito
+### Conflicting Dependencies
 ```bash
 pip install --upgrade -r requirements.txt
 ```
 
-### Porta 8501 Já em Uso
+### Port 8501 Already in Use
 ```bash
 streamlit run app.py --server.port 8502
 ```
 
-## 🎬 Captura de Tela (Screenshots e GIFs)
+## 🎬 Screenshots and GIFs
 
-### Se o GIF não estiver exibindo:
+### If the GIF is not displaying:
 
-**1. Verifique o caminho do arquivo:**
-- O arquivo GIF deve estar em uma pasta `assets/` ou no diretório raiz
-- Use um caminho relativo correto:
+**1. Check the file path:**
+- The GIF file should be in an `assets/` folder or in the root directory
+- Use a correct relative path:
 
 ```markdown
-![Demo do Dashboard](./assets/demo.gif)
+![Dashboard Demo](./assets/demo.gif)
 ```
 
-**2. Use HTML para melhor compatibilidade:**
+**2. Use HTML for better compatibility:**
 
 ```html
 <div align="center">
@@ -202,55 +202,55 @@ streamlit run app.py --server.port 8502
 </div>
 ```
 
-**3. Converta GIF para WebP (mais leve):**
+**3. Convert GIF to WebP (lighter file):**
 
 ```bash
 ffmpeg -i demo.gif -c vp9 demo.webp
 ```
 
-Depois adicione ao README:
+Then add to README:
 
 ```html
-<img src="./assets/demo.webp" alt="Demo do Dashboard" width="100%">
+<img src="./assets/demo.webp" alt="Dashboard Demo" width="100%">
 ```
 
-**4. Converta para vídeo MP4 (mais eficiente):**
+**4. Convert to MP4 video (more efficient):**
 
 ```bash
 ffmpeg -i demo.gif demo.mp4
 ```
 
-Adicione o vídeo:
+Add the video:
 
 ```html
 <video width="100%" controls>
   <source src="./assets/demo.mp4" type="video/mp4">
-  Seu navegador não suporta reprodução de vídeo.
+  Your browser does not support video playback.
 </video>
 ```
 
-## 🤝 Contribuindo
+## 🤝 Contributing
 
-1. Fork o projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
+1. Fork the project
+2. Create a branch for your feature (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## 📄 Licença
+## 📄 License
 
-Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
+This project is under the MIT License. See the LICENSE file for more details.
 
-## 👤 Autor
+## 👤 Author
 
 **Ana Laura França**  
 - GitHub: [@analaurafra](https://github.com/analaurafra)
 
-## 📞 Suporte
+## 📞 Support
 
-Encontrou um problema? Abra uma [issue](https://github.com/analaurafra/dashBoardCursor/issues) no GitHub.
+Found an issue? Open an [issue](https://github.com/analaurafra/dashBoardCursor/issues) on GitHub.
 
 ---
 
-**Última atualização:** Maio 2026  
-**Versão:** 1.0.0
+**Last updated:** May 2026  
+**Version:** 1.0.0
