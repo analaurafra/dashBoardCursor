@@ -47,6 +47,7 @@ def load_dim_veiculos() -> pd.DataFrame:
       valor
     from veiculos
     order by nome
+    
     """
     return pd.read_sql_query(q, get_engine())
 
