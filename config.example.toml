@@ -1,0 +1,7 @@
+[postgres]
+host = "localhost"
+port = 5432
+database = "concessionaria"
+user = "postgres"
+password = "postgres"
+sslmode = "prefer"
