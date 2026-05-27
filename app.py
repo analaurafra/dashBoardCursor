@@ -1,11 +1,12 @@
 from __future__ import annotations
 
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 
 import pandas as pd
 import plotly.express as px
 import streamlit as st
+import sqlalchemy as sa
 
 from db import load_config, make_engine
 
@@ -71,25 +72,30 @@ def load_sales_filtered(
 ) -> pd.DataFrame:
     where = ["1=1"]
     params: dict[str, object] = {}
+    bind_params: list[sa.BindParameter] = []
 
     if start:
         where.append("v.data_venda >= :start")
         params["start"] = start
     if end:
-        where.append("v.data_venda < (:end + interval '1 day')")
-        params["end"] = end
+        # Evita SQL com "interval" e facilita binding
+        where.append("v.data_venda < :end_exclusive")
+        params["end_exclusive"] = end + timedelta(days=1)
 
     if concessionaria_ids:
-        where.append("v.id_concessionarias = any(:concessionaria_ids)")
+        where.append("v.id_concessionarias in :concessionaria_ids")
         params["concessionaria_ids"] = concessionaria_ids
+        bind_params.append(sa.bindparam("concessionaria_ids", expanding=True))
 
     if tipos:
-        where.append("ve.tipo = any(:tipos)")
+        where.append("ve.tipo in :tipos")
         params["tipos"] = tipos
+        bind_params.append(sa.bindparam("tipos", expanding=True))
 
     if modelos:
-        where.append("ve.nome = any(:modelos)")
+        where.append("ve.nome in :modelos")
         params["modelos"] = modelos
+        bind_params.append(sa.bindparam("modelos", expanding=True))
 
     q = f"""
     select
@@ -118,7 +124,11 @@ def load_sales_filtered(
     where {" and ".join(where)}
     """
 
-    df = pd.read_sql_query(q, get_engine(), params=params, parse_dates=["data_venda"])
+    stmt = sa.text(q)
+    if bind_params:
+        stmt = stmt.bindparams(*bind_params)
+
+    df = pd.read_sql_query(stmt, get_engine(), params=params, parse_dates=["data_venda"])
     if not df.empty:
         df["mes"] = df["data_venda"].dt.to_period("M").dt.to_timestamp()
     return df

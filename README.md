@@ -6,7 +6,7 @@ Aplicação interativa em Python para acompanhar vendas de uma concessionária (
 
 - **1) Crie o ambiente e instale dependências**
 
-```bash
+```powershell
 cd dashBoardCursor
 python -m venv .venv
 .\.venv\Scripts\activate
@@ -17,14 +17,23 @@ pip install -r requirements.txt
 
 Copie o arquivo de exemplo e ajuste os valores:
 
-```bash
+```powershell
 copy config.example.toml config.toml
 ```
 
 - **3) Inicie o dashboard**
 
-```bash
+Importante: o `app.py` fica dentro da pasta `dashBoardCursor`.
+
+```powershell
+cd dashBoardCursor
 streamlit run app.py
+```
+
+Ou, a partir da pasta pai (`dashBoard_Cursor`):
+
+```powershell
+.\run.ps1
 ```
 
 ### Observações
