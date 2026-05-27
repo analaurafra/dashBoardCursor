@@ -1,7 +1,0 @@
-[postgres]
-host = "159.223.187.110"
-port = 5432
-database = "novadrive"
-user = "etlreadonly"
-password = "novadrive376A@"
-sslmode = "prefer"
